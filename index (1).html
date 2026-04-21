@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>I Am Mya</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --cream: #F7F3EE;
+      --warm-white: #FDFAF7;
+      --black: #1A1612;
+      --brown: #6B4F3A;
+      --terracotta: #C8634A;
+      --sage: #7A9E8A;
+      --gold: #C9A84C;
+      --light-brown: #D4C3B3;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--cream);
+      color: var(--black);
+      overflow-x: hidden;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-left {
+      background: var(--black);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 4rem;
+      position: relative;
+    }
+
+    .hero-left::after {
+      content: '';
+      position: absolute;
+      top: 0; right: -1px; bottom: 0;
+      width: 60px;
+      background: var(--cream);
+      clip-path: polygon(100% 0, 100% 100%, 0 100%);
+    }
+
+    .hero-eyebrow {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--terracotta);
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-name {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(3.5rem, 7vw, 6rem);
+      font-weight: 700;
+      color: var(--warm-white);
+      line-height: 1.0;
+      margin-bottom: 1rem;
+    }
+
+    .hero-name em {
+      color: var(--gold);
+      font-style: italic;
+    }
+
+    .hero-subtitle {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      font-style: italic;
+      color: var(--light-brown);
+      margin-bottom: 3rem;
+      line-height: 1.6;
+    }
+
+    .hero-right {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-right img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: sepia(15%) contrast(1.05);
+    }
+
+    .hero-right-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to right, rgba(26,22,18,0.3) 0%, transparent 40%);
+    }
+
+    .hero-scroll-hint {
+      position: absolute;
+      bottom: 2rem;
+      right: 2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--warm-white);
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      opacity: 0.7;
+    }
+
+    .scroll-line {
+      width: 1px;
+      height: 50px;
+      background: var(--warm-white);
+      animation: scrollPulse 2s ease-in-out infinite;
+    }
+
+    @keyframes scrollPulse {
+      0%, 100% { opacity: 0.3; transform: scaleY(1); }
+      50% { opacity: 1; transform: scaleY(0.6); }
+    }
+
+    /* ── SECTIONS ── */
+    section {
+      padding: 6rem 0;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 3rem;
+    }
+
+    .section-label {
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--terracotta);
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .section-label::after {
+      content: '';
+      flex: 0 0 40px;
+      height: 1px;
+      background: var(--terracotta);
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 700;
+      line-height: 1.15;
+      margin-bottom: 2rem;
+    }
+
+    /* ── ABOUT (Nutrition) ── */
+    .about-section {
+      background: var(--warm-white);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+
+    .about-text p {
+      font-size: 1.05rem;
+      line-height: 1.85;
+      color: #3D3530;
+      margin-bottom: 1.25rem;
+    }
+
+    .about-image-wrap {
+      position: relative;
+    }
+
+    .about-image-wrap img {
+      width: 100%;
+      aspect-ratio: 3/4;
+      object-fit: cover;
+      border-radius: 2px;
+    }
+
+    .about-image-accent {
+      position: absolute;
+      bottom: -1.5rem;
+      left: -1.5rem;
+      width: 60%;
+      height: 60%;
+      border: 2px solid var(--gold);
+      border-radius: 2px;
+      z-index: -1;
+    }
+
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-top: 2rem;
+    }
+
+    .tag {
+      padding: 0.35rem 1rem;
+      border: 1px solid var(--brown);
+      border-radius: 100px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--brown);
+      letter-spacing: 0.05em;
+    }
+
+    /* ── HOME ── */
+    .home-section {
+      background: var(--cream);
+    }
+
+    .home-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 5rem;
+      align-items: start;
+    }
+
+    .photo-mosaic {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: auto auto auto;
+      gap: 0.75rem;
+    }
+
+    .photo-mosaic img {
+      width: 100%;
+      aspect-ratio: 1;
+      object-fit: cover;
+      border-radius: 2px;
+      filter: sepia(8%);
+      transition: filter 0.3s, transform 0.3s;
+    }
+
+    .photo-mosaic img:hover {
+      filter: sepia(0%);
+      transform: scale(1.02);
+    }
+
+    .photo-mosaic img:first-child {
+      grid-column: span 2;
+      aspect-ratio: 16/7;
+    }
+
+    .home-text p {
+      font-size: 1.05rem;
+      line-height: 1.85;
+      color: #3D3530;
+      margin-bottom: 1.25rem;
+    }
+
+    /* ── INTERESTS ── */
+    .interests-section {
+      background: var(--black);
+      color: var(--warm-white);
+    }
+
+    .interests-section .section-title {
+      color: var(--warm-white);
+    }
+
+    .interests-section .section-label {
+      color: var(--gold);
+    }
+
+    .interests-section .section-label::after {
+      background: var(--gold);
+    }
+
+    .interests-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+
+    .interest-cards {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    .interest-card {
+      border-left: 3px solid var(--terracotta);
+      padding: 1rem 1.5rem;
+      background: rgba(255,255,255,0.04);
+      border-radius: 0 4px 4px 0;
+    }
+
+    .interest-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      font-weight: 400;
+      color: var(--gold);
+      margin-bottom: 0.4rem;
+    }
+
+    .interest-card p {
+      font-size: 0.92rem;
+      line-height: 1.7;
+      color: #B8AFA8;
+    }
+
+    .polaroid-wrap {
+      position: relative;
+    }
+
+    .polaroid {
+      background: #fff;
+      padding: 1rem 1rem 3.5rem;
+      box-shadow: 6px 8px 30px rgba(0,0,0,0.4);
+      transform: rotate(-2deg);
+      max-width: 340px;
+      margin: 0 auto;
+    }
+
+    .polaroid img {
+      width: 100%;
+      aspect-ratio: 1;
+      object-fit: cover;
+      display: block;
+    }
+
+    .polaroid-caption {
+      text-align: center;
+      margin-top: 1rem;
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 0.95rem;
+      color: #555;
+    }
+
+    /* ── FUTURE ── */
+    .future-section {
+      background: var(--warm-white);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .future-section::before {
+      content: 'FUTURE';
+      position: absolute;
+      top: 50%;
+      right: -2rem;
+      transform: translateY(-50%);
+      font-family: 'Playfair Display', serif;
+      font-size: 12rem;
+      font-weight: 700;
+      color: rgba(107,79,58,0.06);
+      pointer-events: none;
+      white-space: nowrap;
+    }
+
+    .future-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+
+    .future-text p {
+      font-size: 1.05rem;
+      line-height: 1.85;
+      color: #3D3530;
+      margin-bottom: 1.25rem;
+    }
+
+    .future-quote {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem;
+      font-style: italic;
+      line-height: 1.5;
+      color: var(--brown);
+      border-left: 4px solid var(--terracotta);
+      padding-left: 2rem;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--black);
+      padding: 3rem;
+      text-align: center;
+    }
+
+    footer p {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 0.95rem;
+      color: var(--light-brown);
+      opacity: 0.6;
+    }
+
+    /* ── FADE-IN ANIMATIONS ── */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      .hero { grid-template-columns: 1fr; }
+      .hero-right { height: 45vh; }
+      .hero-left::after { display: none; }
+      .hero-left { padding: 3rem 2rem; justify-content: flex-end; }
+      .about-grid, .home-grid, .interests-layout, .future-layout {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+      }
+      .container { padding: 0 1.5rem; }
+      section { padding: 4rem 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-left">
+      <p class="hero-eyebrow">A Project in Becoming</p>
+      <h1 class="hero-name">I am<br><em>Mya.</em></h1>
+      <p class="hero-subtitle">Nutrition scientist. Athlete. Cook.<br>Always becoming something more.</p>
+    </div>
+    <div class="hero-right">
+      <!-- Replace fuego.jpg with your actual photo file name if different -->
+      <img src="fuego.jpg" alt="Cathedral from the gym" />
+      <div class="hero-right-overlay"></div>
+      <div class="hero-scroll-hint">
+        <div class="scroll-line"></div>
+        <span>scroll</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- NUTRITION / ACADEMICS -->
+  <section class="about-section">
+    <div class="container">
+      <div class="about-grid fade-up">
+        <div class="about-text">
+          <p class="section-label">01 — Academics</p>
+          <h2 class="section-title">Nutrition<br>Science</h2>
+          <p>I go to the University of Pittsburgh, where I'm currently taking Organic Chemistry and Biology alongside this course. I'm working toward a Nutrition Science major and considering a math minor.</p>
+          <p>My real passion is sport nutrition — I want to go that route and help athletes perform at their best through the food they eat.</p>
+          <div class="tag-row">
+            <span class="tag">Nutrition Science</span>
+            <span class="tag">University of Pittsburgh</span>
+            <span class="tag">Organic Chemistry</span>
+            <span class="tag">Biology</span>
+            <span class="tag">Math Minor</span>
+          </div>
+        </div>
+        <div class="about-image-wrap">
+          <!-- Replace fuego.jpg with your actual cathedral/gym photo -->
+          <img src="fuego.jpg" alt="Cathedral from the gym" />
+          <div class="about-image-accent"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOME & FAMILY -->
+  <section class="home-section">
+    <div class="container">
+      <div class="home-grid fade-up">
+        <div class="photo-mosaic">
+          <!-- Replace pgrid1–pgrid6 with your actual family photo file names -->
+          <img src="pgrid1.jpg" alt="Family" />
+          <img src="pgrid2.jpg" alt="Family" />
+          <img src="pgrid3.jpg" alt="Family" />
+          <img src="pgrid4.jpg" alt="Family" />
+          <img src="pgrid5.jpg" alt="Family" />
+          <img src="pgrid6.jpg" alt="Family" />
+        </div>
+        <div class="home-text">
+          <p class="section-label">02 — Roots</p>
+          <h2 class="section-title">Home &amp;<br>Family</h2>
+          <p>I live in the Philadelphia area, splitting my time between Fishtown with my mom and Warrington, Bucks County with my dad. Going back and forth can be hectic, but it's given me the chance to experience two very different environments.</p>
+          <p>My parents, siblings, and my dog are all incredibly important to me and have helped shape who I am today.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INTERESTS -->
+  <section class="interests-section">
+    <div class="container">
+      <div class="interests-layout fade-up">
+        <div>
+          <p class="section-label">03 — Passions</p>
+          <h2 class="section-title">Interests &amp;<br>Activities</h2>
+          <div class="interest-cards">
+            <div class="interest-card">
+              <h3>The Gym</h3>
+              <p>Going to the gym helps me work toward my goals, stay consistent, and do something I genuinely enjoy. I'm also thinking about trying out for flag football next year.</p>
+            </div>
+            <div class="interest-card">
+              <h3>Travel &amp; New Experiences</h3>
+              <p>Exploring new places and stepping outside my comfort zone are things I actively seek out. Every new experience teaches me something about myself.</p>
+            </div>
+            <div class="interest-card">
+              <h3>Cooking &amp; Baking</h3>
+              <p>I love being creative in the kitchen — making food for myself and the people I care about. It connects directly to why I'm studying nutrition.</p>
+            </div>
+          </div>
+        </div>
+        <div class="polaroid-wrap">
+          <!-- Replace polaroid.jpg with your actual Spain photo -->
+          <div class="polaroid">
+            <img src="polaroid.jpg" alt="Study abroad in Spain" />
+            <p class="polaroid-caption">Study abroad — Spain</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FUTURE -->
+  <section class="future-section">
+    <div class="container">
+      <div class="future-layout fade-up">
+        <div class="future-text">
+          <p class="section-label">04 — Looking Ahead</p>
+          <h2 class="section-title">In the<br>Future</h2>
+          <p>I want to pursue a career in sports nutrition because I love nutrition and preparing food for myself and others. Cooking with my mom and baking with my grandmother have been important parts of my life.</p>
+          <p>My involvement in sports and dance connects directly to my interest in helping people perform their best. Volunteering is giving me experience that will help me in the future.</p>
+          <p>This career matters to me because it combines my passions for food, fitness, and helping others lead healthy lives.</p>
+        </div>
+        <div>
+          <blockquote class="future-quote">
+            "This career combines my passions for food, fitness, and helping others lead healthy lives."
+          </blockquote>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>Mya — A Project in Becoming &mdash; University of Pittsburgh</p>
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) e.target.classList.add('visible');
+      });
+    }, { threshold: 0.15 });
+
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>
